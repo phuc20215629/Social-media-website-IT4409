@@ -378,6 +378,7 @@ const getSuggestedUsers = async (req, res) => {
             {
                 $match: {
                     _id: { $ne: userId },
+                    isFrozen: false,
                 },
             },
             {

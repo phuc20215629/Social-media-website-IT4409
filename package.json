@@ -1,0 +1,14 @@
+{
+  "name": "social-media-website-it4409",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

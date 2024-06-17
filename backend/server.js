@@ -14,6 +14,8 @@ dotenv.config(); // to read .env file
 connectDB();
 
 const PORT = process.env.PORT || 6000; // backup the port with 6000 if PORT is not specified in the config
+const __dirname = path.resolve();
+const __parentdirname = path.resolve(__dirname, '..');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -32,13 +34,13 @@ app.use('/api/posts', postRoutes);
 app.use('/api/messages', messageRoutes);
 
 // console.log(path.join(__dirname, '/frontend/dist'));
-const __dirname = path.resolve();
+
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+    app.use(express.static(path.join(__parentdirname, '/frontend/dist')));
 
     // react app
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
+        res.sendFile(path.resolve(__parentdirname, 'frontend', 'dist', 'index.html'));
     });
 }
 

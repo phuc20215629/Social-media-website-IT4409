@@ -9,7 +9,7 @@ export default defineConfig({
         // prevent CORS errors
         proxy: {
             '/api': {
-                target: 'https://api.render.com/deploy/srv-cpnqou08fa8c73b5shh0?key=d9sFA7YcJcc',
+                target: 'http://localhost:4000',
                 changeOrigin: true,
                 secure: false,
             },

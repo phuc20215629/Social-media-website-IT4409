@@ -64,6 +64,10 @@ const ChatPage = () => {
 
     const handleConversationSearch = async (e) => {
         e.preventDefault();
+        if (!searchText.trim()) {
+            
+            return;
+        }
         setSearchingUser(true);
         try {
             const res = await fetch(`/api/users/profile/${searchText}`);

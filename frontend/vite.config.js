@@ -8,8 +8,8 @@ export default defineConfig({
         port: 5000,
         // prevent CORS errors
         proxy: {
-            "/api": {
-                target: "http://localhost:4000",
+            '/api': {
+                target: 'https://api.render.com/deploy/srv-cpnqou08fa8c73b5shh0?key=d9sFA7YcJcc',
                 changeOrigin: true,
                 secure: false,
             },

@@ -33,12 +33,12 @@ app.use('/api/messages', messageRoutes);
 
 // console.log(path.join(__dirname, '/frontend/dist'));
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, '/frontend/dist')));
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-//     // react app
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
-//     });
-// }
+    // react app
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
+    });
+}
 server.listen(PORT, () => console.log(`server started at http://localhost:${PORT} heyy`));

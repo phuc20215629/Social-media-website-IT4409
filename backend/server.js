@@ -7,7 +7,6 @@ import postRoutes from './routes/postRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
 import { v2 as cloudinary } from 'cloudinary';
 import { app, server } from './socket/socket.js';
-import path, { dirname } from 'path';
 
 dotenv.config(); // to read .env file
 
@@ -33,12 +32,13 @@ app.use('/api/messages', messageRoutes);
 
 // console.log(path.join(__dirname, '/frontend/dist'));
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-    // react app
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
-    });
-}
+//     // react app
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
+//     });
+// }
+
 server.listen(PORT, () => console.log(`server started at http://localhost:${PORT} heyy`));

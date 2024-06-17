@@ -6,7 +6,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "npm start --prefix backend",
-    "build": "npm i --prefix frontend npm run build --prefix frontend && npm run build --prefix backend"
+    "build": "npm i --prefix frontend && npm run build --prefix frontend && npm run build --prefix backend"
   },
   "keywords": [],
   "author": "",

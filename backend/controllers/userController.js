@@ -180,7 +180,7 @@ const forgotPassword = async (req, res) => {
             from: 'hanoi2003.a@gmail.com',
             to: email,
             subject: 'Password Reset',
-            text: `Click on this link to change your password: \n${url1} \n or click on this link if you are using localhost: \n${url2}`,
+            text: `Click on this link to change your password: \n${url2} \n or click on this link if you are using localhost: \n${url1}`,
         };
 
         await transporter.sendMail(mailOptions, function (error, info) {

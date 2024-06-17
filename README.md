@@ -1,6 +1,6 @@
 # **SocialMediaSite**
-	
-Welcome to the SocialMediaSite repository! 
+
+Welcome to the SocialMediaSite repository!
 
 This project is a fully-featured social media website built with modern web technologies. Users can create profiles, post updates, follow other users, and interact through likes and comments.
 
@@ -30,16 +30,18 @@ This project is a fully-featured social media website built with modern web tech
 
 - **Real-time**: Socket.IO
 
-- **Hosting**: Vercel
+- **Hosting**: Render
 
 ## **Getting Started**
 
 ### Prerequisites
 
-Ensure you have the following installed on your local machine:
+To run on localhost, ensure you have the following installed on your local machine:
 
 - Node.js (v14 or later)
 
 - npm (v6 or later)
 
 - MongoDB
+
+Or you can visit via this website: https://social-media-website-it4409.onrender.com/

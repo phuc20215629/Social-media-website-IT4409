@@ -6,13 +6,13 @@ import Post from '../components/Post';
 import SuggestedUsers from '../components/SuggestedUsers';
 import useShowToast from '../hooks/useShowToast';
 import Repost from '../components/Repost';
- 
+
 const HomePage = () => {
     const [posts, setPosts] = useRecoilState(postsAtom);
     const [reposts, setReposts] = useRecoilState(repostsAtom);
     const [loading, setLoading] = useState(true);
     const showToast = useShowToast();
- 
+
     useEffect(() => {
         const getFeedPosts = async () => {
             setLoading(true);
@@ -34,7 +34,7 @@ const HomePage = () => {
         };
         getFeedPosts();
     }, [showToast, setPosts]);
- 
+
     return (
         <Flex gap="10" alignItems={'flex-start'}>
             <Box flex={70}>
@@ -53,18 +53,18 @@ const HomePage = () => {
                         </Stack>
                     </Flex>
                 )}
- 
+
                 {loading && (
                     <Flex justify="center">
                         <Spinner size="xl" />
                     </Flex>
                 )}
- 
+
                 {reposts.length > 0 &&
                     reposts.map((repost) => <Repost key={repost._id} post={repost.post} postedBy={repost.postedBy} />)}
                 {posts.length > 0 && posts.map((post) => <Post key={post._id} post={post} postedBy={post.postedBy} />)}
             </Box>
- 
+
             <Box
                 flex={30}
                 display={{
@@ -80,5 +80,5 @@ const HomePage = () => {
         </Flex>
     );
 };
- 
+
 export default HomePage;

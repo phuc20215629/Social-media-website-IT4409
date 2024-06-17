@@ -66,18 +66,18 @@ const Header = () => {
                 maxW={{ base: '620px', md: '900px' }}
                 mt={5}
                 mb={5}
-                gap={20}
+                gap={15}
             >
                 {user && (
-                    <Link as={RouterLink} to="/">
+                    <Link as={RouterLink} to="/" mt={1}>
                         <AiFillHome size={26} />
                     </Link>
                 )}
 
                 {user && (
-                    <Flex position="relative">
+                    <Flex position="relative" w={'50%'}>
                         <SearchBar
-                            w={'400px'}
+                            w={'full'}
                             setUsers={setUsers}
                             setInput={setInput}
                             setLoading={setLoading}
@@ -85,7 +85,7 @@ const Header = () => {
                             location={location}
                         />
                         {users && users.length >= 0 && input.length > 0 && (
-                            <SearchResultList users={users} w={'400px'} loading={loading} />
+                            <SearchResultList users={users} w={'full'} loading={loading} />
                         )}
                     </Flex>
                 )}

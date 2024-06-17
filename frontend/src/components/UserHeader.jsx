@@ -176,7 +176,7 @@ const UserHeader = ({ user }) => {
             {isOpen && (
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
-                    <ModalContent bgColor={useColorModeValue('gray.300', 'gray.dark')}>
+                    <ModalContent bgColor={useColorModeValue('whitesmoke', 'gray.900')}>
                         <ModalHeader>{isFollower ? 'Followers' : 'Following'}</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>

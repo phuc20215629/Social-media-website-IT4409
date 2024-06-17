@@ -400,10 +400,12 @@ const getFollowingsAndFollowers = async (req, res) => {
 
         const followings = await User.find({ _id: { $in: followingIds.following } })
             .select('avatar')
-            .select('username');
+            .select('username')
+            .select('name');
         const followers = await User.find({ _id: { $in: followerIds.followers } })
             .select('avatar')
-            .select('username');
+            .select('username')
+            .select('name');
 
         res.status(200).json({ followings, followers });
     } catch (error) {

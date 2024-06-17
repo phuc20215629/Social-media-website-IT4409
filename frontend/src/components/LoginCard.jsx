@@ -71,6 +71,7 @@ export default function LoginCard() {
                                 type="text"
                                 onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
                                 value={inputs.username}
+                                color={'whitesmoke'}
                             />
                         </FormControl>
                         <FormControl isRequired>

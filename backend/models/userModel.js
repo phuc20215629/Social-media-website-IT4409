@@ -38,9 +38,9 @@ const userSchema = mongoose.Schema(
             default: '',
         },
         isFrozen: {
-			type: Boolean,
-			default: false,
-		},
+            type: Boolean,
+            default: false,
+        },
     },
     {
         timestamps: true,

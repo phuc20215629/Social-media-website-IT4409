@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "SET NODE_ENV=development nodemon server.js",
+    "dev": "nodemon server.js",
     "build": "npm i && npm install --save-optional win-node-env"
   },
   "type": "module",

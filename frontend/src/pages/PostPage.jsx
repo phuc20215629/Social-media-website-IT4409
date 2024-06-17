@@ -10,21 +10,19 @@ import {
     ModalBody,
     ModalCloseButton,
     ModalContent,
-    ModalFooter,
     ModalHeader,
     ModalOverlay,
     Spacer,
     Spinner,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs,
     Text,
     VStack,
-    Tabs,
-    TabList,
-    TabPanels,
-    Tab,
-    TabPanel,
-    useDisclosure,
     useColorModeValue,
-    HStack,
+    useDisclosure,
 } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
 import { useEffect, useState } from 'react';
@@ -40,14 +38,14 @@ import useGetUserProfile from '../hooks/useGetUserProfile';
 import useShowToast from '../hooks/useShowToast';
 
 const PostPage = () => {
+    const currentUser = useRecoilValue(userAtom);
     const { pid } = useParams();
     const { user, loading } = useGetUserProfile();
     const [posts, setPosts] = useRecoilState(postsAtom);
-    const currentUser = useRecoilValue(userAtom);
-    const showToast = useShowToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [likedUsers, setLikedUsers] = useState([]);
     const [repostedUsers, setRepostedUsers] = useState([]);
+    const showToast = useShowToast();
 
     useEffect(() => {
         const getUser = async () => {

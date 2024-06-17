@@ -167,8 +167,8 @@ const forgotPassword = async (req, res) => {
             expiresIn: '5m',
         });
 
-        const url = `http://localhost:5000/auth/reset-password/${oldUser._id}/${token}`;
-        // const emailHTML = render(<Email email={email} username={oldUser.username} url={url} />);
+        const url1 = `http://localhost:5000/auth/reset-password/${oldUser._id}/${token}`;
+        const url2 = `https://social-media-website-it4409.onrender.com/auth/reset-password/${oldUser._id}/${token}`;
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -176,17 +176,11 @@ const forgotPassword = async (req, res) => {
                 pass: process.env.EMAIL_PASSWORD,
             },
         });
-        // var mailOptions = {
-        //     from: 'hanoi2003.a@gmail.com',
-        //     to: email,
-        //     subject: 'Password Reset',
-        //     html: emailHTML,
-        // };
         var mailOptions = {
             from: 'hanoi2003.a@gmail.com',
             to: email,
             subject: 'Password Reset',
-            text: url,
+            text: `Click on this link to change your password: \n${url1} \n or click on this link if you are using localhost: \n${url2}`,
         };
 
         await transporter.sendMail(mailOptions, function (error, info) {
@@ -396,6 +390,27 @@ const getSuggestedUsers = async (req, res) => {
     }
 };
 
+const getFollowingsAndFollowers = async (req, res) => {
+    try {
+        // exclude the current user from suggested users array and exclude users that current user is already following
+        const useId = req.params.id;
+
+        const followingIds = await User.findById(useId).select('following');
+        const followerIds = await User.findById(useId).select('followers');
+
+        const followings = await User.find({ _id: { $in: followingIds.following } })
+            .select('avatar')
+            .select('username');
+        const followers = await User.find({ _id: { $in: followerIds.followers } })
+            .select('avatar')
+            .select('username');
+
+        res.status(200).json({ followings, followers });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const freezeAccount = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
@@ -421,6 +436,7 @@ export {
     getUserProfile,
     getLikedAndRepostedUsers,
     getSuggestedUsers,
+    getFollowingsAndFollowers,
     freezeAccount,
     searchUser,
     forgotPassword,

@@ -14,6 +14,7 @@ import {
     resetPassword,
     changePassword,
     getLikedAndRepostedUsers,
+    getFollowingsAndFollowers,
 } from '../controllers/userController.js';
 import protectRoute from '../middlewares/protectRoute.js';
 
@@ -28,6 +29,8 @@ router.get('/profile/:query', getUserProfile);
 router.get('/liked-reposted/:postId', getLikedAndRepostedUsers);
 
 router.get('/suggested', protectRoute, getSuggestedUsers);
+
+router.get('/follows/:id', protectRoute, getFollowingsAndFollowers);
 
 // Sign up
 router.post('/signup', signupUser);
